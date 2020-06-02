@@ -10,5 +10,61 @@
     <div id="payment-request-button">
         <!-- A Stripe Element will be inserted here. -->
     </div>
+
+        <script>
+            // Implement demo Payment Request Button
+            // Note: this merchant has been set up for demo purposes.
+            var stripe = Stripe('pk_test_5KARAwUhnQTmofrvz4FSxdJ6');
+
+            var paymentRequest = stripe.paymentRequest({
+            country: 'US',
+            currency: 'usd',
+            total: {
+                label: "Stripe (won't be charged)",
+                amount: 1099,
+            },
+            });
+
+            paymentRequest.on('token', function(ev) {
+            console.log('[Payment Request Demo] Got token:', ev.token.id);
+            ev.complete('success');
+            });
+
+            var elements = stripe.elements();
+            var prButton = elements.create('paymentRequestButton', {
+            paymentRequest,
+            style: {
+                paymentRequestButton: {
+                height: '44px',
+                },
+            },
+            });
+
+            var elements2 = stripe.elements();
+            var prButton2 = elements2.create('paymentRequestButton', {
+            paymentRequest,
+            style: {
+                paymentRequestButton: {
+                height: '44px',
+                },
+            },
+            });
+
+            paymentRequest.canMakePayment().then(function(result) {
+            // Specifically for the Payment Request *API* page, we only want to demo
+            // the Payment Request button, but not the Apple Pay button. This is
+            // because while our Element normalizes over both Apple Pay and the
+            // Payment Request API, this page only references the latter.
+            if (result) {
+                document.getElementById('payment-request-button').style.display = 'block';
+                prButton.mount('#payment-request-button');
+                prButton2.mount('#payment-request-button-react');
+                document.getElementById('payment-request-button-react').style.display = 'block';
+            } else {
+                document.getElementById('payment-request-unavailable').style.display = 'block';
+                document.getElementById('payment-request-unavailable-react').style.display = 'block';
+            }
+            });
+        </script>
 </body>
 </html>
