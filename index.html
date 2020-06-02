@@ -15,6 +15,17 @@
             if (!window.PaymentRequest)
             return;
 
+            const applePayMethod = {
+                supportedMethods: "https://apple.com/apple-pay",
+                data: {
+                    version: 3,
+                    merchantIdentifier: "merchant.kz.paybox.p2p",
+                    merchantCapabilities: ["supports3DS", "supportsCredit", "supportsDebit"],
+                    supportedNetworks: ["amex", "discover", "masterCard", "visa"],
+                    countryCode: "US",
+                },
+            };
+
             try {
                 const request = new PaymentRequest([applePayMethod], paymentDetails, paymentOptions);
 
