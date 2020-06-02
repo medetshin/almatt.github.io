@@ -26,9 +26,16 @@
                 },
             };
 
-            try {
-                const request = new PaymentRequest([applePayMethod], paymentDetails, paymentOptions);
+            const paymentDetails = {
+                total: {
+                    label: "My Merchant",
+                    amount: { value: "27.50", currency: "USD" },
+                },
+            }
 
+            try {
+                const request = new PaymentRequest([applePayMethod], paymentDetails, {});
+                console.log(request);
                 request.onmerchantvalidation = function (event) {
                 // Have your server fetch a payment session from event.validationURL.
                     const sessionPromise = fetchPaymentSession(event.validationURL);
@@ -45,7 +52,7 @@
                 const status = processResponse(response);
                 response.complete(status);
             } catch (e) {
-            // Handle errors
+                console.log(e)
             }
         }
 
