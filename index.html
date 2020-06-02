@@ -7,6 +7,12 @@
 <body>
     <button style="-webkit-appearance: -apple-pay-button;" onclick="applePayButtonClicked()"></button>
     
+    <iframe is='my-frame'></iframe>
+    
+    <iframe is='my-frame'>Hello world</iframe>
+    
+    <iframe is='my-frame' allowpaymentrequest src="https://paybox.money"></iframe>
+
     <script>
         class MyFrame extends HTMLIFrameElement {
                 constructor() {
@@ -17,11 +23,7 @@
             customElements.define('my-frame', MyFrame, { extends: 'iframe' });
     </script>
 
-    <iframe is='my-frame'></iframe>
-
-    <iframe is='my-frame'>Hello world</iframe>
-
-    <iframe is='my-frame' src="https://paybox.money"></iframe>
+    
     
     <script>
         async function applePayButtonClicked(){
