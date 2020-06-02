@@ -5,13 +5,11 @@
     <title>Document</title>
 </head>
 <body>
-    <button style="-webkit-appearance: -apple-pay-button;" onclick="applePayButtonClicked()"></button>
-    
-    <iframe is='my-frame'></iframe>
-    
-    <iframe is='my-frame'>Hello world</iframe>
-    
-    <iframe is='my-frame' allowpaymentrequest src="https://paybox.money"></iframe>
+    <!-- <button style="-webkit-appearance: -apple-pay-button;" onclick="applePayButtonClicked()"></button> -->
+
+
+    <iframe is="my-frame"></iframe>
+    <script src="a.js"></script>
 
     <script>
         class MyFrame extends HTMLIFrameElement {
@@ -34,7 +32,7 @@
             const applePayMethod = {
                 supportedMethods: "https://apple.com/apple-pay",
                 data: {
-                    version: 3,
+                    version: 4,
                     merchantIdentifier: "merchant.kz.paybox.p2p",
                     merchantCapabilities: ["supports3DS", "supportsCredit", "supportsDebit"],
                     supportedNetworks: ["amex", "discover", "masterCard", "visa"],
