@@ -33,7 +33,11 @@
 
             try {
                 const request = new PaymentRequest([applePayMethod], paymentDetails, {});
-                console.log(request);
+                request.show().then(function(paymentResponse) {
+                    paymentResponse.complete('success').then(function() {
+                        console.log('success');
+                    })
+                })
                 request.onmerchantvalidation = function (event) {
                 // Have your server fetch a payment session from event.validationURL.
                     const sessionPromise = fetchPaymentSession(event.validationURL);
