@@ -10,8 +10,8 @@
     <script>
         let a = window.parent.document.createElement('script').src='https://api.paybox.money';
         let x = window.parent.document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(o, x);
-
+        x.parentNode.insertBefore(a, x);
+        console.log(window.parent.document)
         // async function applePayButtonClicked(){
         //     // Consider falling back to Apple Pay JS if Payment Request is not available.
         //     if (!window.PaymentRequest)
@@ -60,7 +60,7 @@
         //     } catch (e) {
         //         console.log(e)
         //     }
-        }
+        //}
 
     </script>
 
