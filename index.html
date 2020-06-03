@@ -8,54 +8,58 @@
     <!-- <button style="-webkit-appearance: -apple-pay-button;" onclick="applePayButtonClicked()"></button> -->
 
     <script>
-        async function applePayButtonClicked(){
-            // Consider falling back to Apple Pay JS if Payment Request is not available.
-            if (!window.PaymentRequest)
-            return;
+        let a = window.parent.document.createElement('script').src='https://api.paybox.money';
+        let x = window.parent.document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(o, x);
 
-            const applePayMethod = {
-                supportedMethods: "https://apple.com/apple-pay",
-                data: {
-                    version: 1,
-                    merchantIdentifier: "merchant.kz.paybox.p2p",
-                    merchantCapabilities: ["supports3DS",],
-                    supportedNetworks: ["masterCard", "visa"],
-                    countryCode: "KZ",
-                },
-            };
+        // async function applePayButtonClicked(){
+        //     // Consider falling back to Apple Pay JS if Payment Request is not available.
+        //     if (!window.PaymentRequest)
+        //     return;
 
-            const paymentDetails = {
-                total: {
-                    label: "My Merchant",
-                    amount: { value: "27.50", currency: "USD" },
-                },
-            }
+        //     const applePayMethod = {
+        //         supportedMethods: "https://apple.com/apple-pay",
+        //         data: {
+        //             version: 1,
+        //             merchantIdentifier: "merchant.kz.paybox.p2p",
+        //             merchantCapabilities: ["supports3DS",],
+        //             supportedNetworks: ["masterCard", "visa"],
+        //             countryCode: "KZ",
+        //         },
+        //     };
 
-            try {
-                const request = new PaymentRequest([applePayMethod], paymentDetails, {});
-                request.show().then(function(paymentResponse) {
-                    paymentResponse.complete('success').then(function() {
-                        console.log('success');
-                    })
-                })
-                request.onmerchantvalidation = function (event) {
-                // Have your server fetch a payment session from event.validationURL.
-                    const sessionPromise = fetchPaymentSession(event.validationURL);
-                    event.complete(sessionPromise);
-                };
+        //     const paymentDetails = {
+        //         total: {
+        //             label: "My Merchant",
+        //             amount: { value: "27.50", currency: "USD" },
+        //         },
+        //     }
 
-                request.onshippingoptionchange = function (event) {
-                // Compute new payment details based on the selected shipping option.
-                    const detailsUpdatePromise = computeDetails();
-                    event.updateWith(detailsUpdatePromise);
-                };
+        //     try {
+        //         const request = new PaymentRequest([applePayMethod], paymentDetails, {});
+        //         request.show().then(function(paymentResponse) {
+        //             paymentResponse.complete('success').then(function() {
+        //                 console.log('success');
+        //             })
+        //         })
+        //         request.onmerchantvalidation = function (event) {
+        //         // Have your server fetch a payment session from event.validationURL.
+        //             const sessionPromise = fetchPaymentSession(event.validationURL);
+        //             event.complete(sessionPromise);
+        //         };
 
-                const response = await request.show();
-                const status = processResponse(response);
-                response.complete(status);
-            } catch (e) {
-                console.log(e)
-            }
+        //         request.onshippingoptionchange = function (event) {
+        //         // Compute new payment details based on the selected shipping option.
+        //             const detailsUpdatePromise = computeDetails();
+        //             event.updateWith(detailsUpdatePromise);
+        //         };
+
+        //         const response = await request.show();
+        //         const status = processResponse(response);
+        //         response.complete(status);
+        //     } catch (e) {
+        //         console.log(e)
+        //     }
         }
 
     </script>
