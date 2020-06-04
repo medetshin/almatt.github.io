@@ -5,122 +5,42 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <button style="-webkit-appearance: -apple-pay-button;" onclick="applePayButtonClicked()"></button> -->
+
 
     <script>
-        let a = window.parent.document.createElement('script').src='https://api.paybox.money';
-        let x = window.parent.document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(a, x);
-        console.log(window.parent.document)
-        // async function applePayButtonClicked(){
-        //     // Consider falling back to Apple Pay JS if Payment Request is not available.
-        //     if (!window.PaymentRequest)
-        //     return;
+        // client-script
+        setTimeout(async () => {
+            const response = await window.ApplePaySession.canMakePaymentsWithActiveCard('merchant.kz.paybox.p2p');
+            console.log(response);
 
-        //     const applePayMethod = {
-        //         supportedMethods: "https://apple.com/apple-pay",
-        //         data: {
-        //             version: 1,
-        //             merchantIdentifier: "merchant.kz.paybox.p2p",
-        //             merchantCapabilities: ["supports3DS",],
-        //             supportedNetworks: ["masterCard", "visa"],
-        //             countryCode: "KZ",
-        //         },
-        //     };
+            window.frames[0].postMessage({
+                event: response
+            },'*');
+        }, 2000);
 
-        //     const paymentDetails = {
-        //         total: {
-        //             label: "My Merchant",
-        //             amount: { value: "27.50", currency: "USD" },
-        //         },
-        //     }
+        window.addEventListener("message", receiveMessage, false);
 
-        //     try {
-        //         const request = new PaymentRequest([applePayMethod], paymentDetails, {});
-        //         request.show().then(function(paymentResponse) {
-        //             paymentResponse.complete('success').then(function() {
-        //                 console.log('success');
-        //             })
-        //         })
-        //         request.onmerchantvalidation = function (event) {
-        //         // Have your server fetch a payment session from event.validationURL.
-        //             const sessionPromise = fetchPaymentSession(event.validationURL);
-        //             event.complete(sessionPromise);
-        //         };
+        function receiveMessage(event) {
+            console.log(event.data);
 
-        //         request.onshippingoptionchange = function (event) {
-        //         // Compute new payment details based on the selected shipping option.
-        //             const detailsUpdatePromise = computeDetails();
-        //             event.updateWith(detailsUpdatePromise);
-        //         };
-
-        //         const response = await request.show();
-        //         const status = processResponse(response);
-        //         response.complete(status);
-        //     } catch (e) {
-        //         console.log(e)
-        //     }
-        //}
-
-    </script>
-
-    <!-- <iframe src="https://p2p.paybox.kz/pay.html?customer=0182b4b9a77c7bf12e043c4f90511197" frameborder="0" allowpaymentrequest="true" style='width:100%;height:500px;'></iframe> -->
-    <script src="https://js.stripe.com/v3/"></script>
-    <div id="payment-request-button">
-    </div>
-
-        <script>
-            var stripe = Stripe('pk_test_5KARAwUhnQTmofrvz4FSxdJ6');
-
-            var paymentRequest = stripe.paymentRequest({
-            country: 'US',
-            currency: 'usd',
-            total: {
-                label: "Stripe (won't be charged)",
-                amount: 1099,
-            },
-            });
-
-            paymentRequest.on('token', function(ev) {
-            console.log('[Payment Request Demo] Got token:', ev.token.id);
-            ev.complete('success');
-            });
-
-            var elements = stripe.elements();
-            var prButton = elements.create('paymentRequestButton', {
-            paymentRequest,
-            style: {
-                paymentRequestButton: {
-                height: '44px',
-                },
-            },
-            });
-
-            var elements2 = stripe.elements();
-            var prButton2 = elements2.create('paymentRequestButton', {
-            paymentRequest,
-            style: {
-                paymentRequestButton: {
-                height: '44px',
-                },
-            },
-            });
-
-            paymentRequest.canMakePayment().then(function(result) {
-            // Specifically for the Payment Request *API* page, we only want to demo
-            // the Payment Request button, but not the Apple Pay button. This is
-            // because while our Element normalizes over both Apple Pay and the
-            // Payment Request API, this page only references the latter.
-            if (result) {
-                document.getElementById('payment-request-button').style.display = 'block';
-                prButton.mount('#payment-request-button');
-                prButton2.mount('#payment-request-button-react');
-                document.getElementById('payment-request-button-react').style.display = 'block';
-            } else {
-                document.getElementById('payment-request-unavailable').style.display = 'block';
-                document.getElementById('payment-request-unavailable-react').style.display = 'block';
+            const options = {
+                    'total': {
+                        'label': 'ApplePay',
+                        'amount': 200,
+                    },
+                    'countryCode': 'KZ',
+                    'currencyCode': 'KZT',
+                    'merchantCapabilities': ['supports3DS'],
+                    'supportedNetworks': ['masterCard', 'visa']
             }
-            });
-        </script>
+
+            const applePaySession = new window.ApplePaySession(1, options);
+
+            applePaySession.onvalidatemerchant = function() { console.log('validation') };
+            applePaySession.onpaymentauthorized = function() { console.log('paymentauth') };
+
+            applePaySession.begin();
+        }
+    </script>
 </body>
 </html>
