@@ -5,9 +5,13 @@
     <title>Document</title>
 </head>
 <body>
-
-    <script src="https://67ae39425896.ngrok.io/applepay-client/index.js"></script>
+    <button id="paybox"></button>
+    <script src="https://5619373262a0.ngrok.io/applepay-client/index.js"></script>
     <script>
+
+        window.onload = () => {
+            window.PayBoxApplePay('paybox', 'asd', {amount: 123, description: 'asd'}, () => { }, () => { }, (a) => {console.log(a)}, (err)=> {console.log(err)});
+        }
         
         // // client-script
         // setTimeout(async () => {
