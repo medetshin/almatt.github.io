@@ -42,7 +42,6 @@
                 console.log(err)
             }
 
-
             window.PayBoxPayButtons(
                 'paybox1',
                 'qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw',
@@ -54,25 +53,6 @@
                 canMake,
                 cantMake
             );
-
-            function success(r) {
-                console.log('success')
-                console.log(r)
-            }
-
-            function error(r) {
-                console.log('error')
-                console.log(r)
-            }
-
-            function canMake() {
-                console.log('canMake')
-            }
-
-            function cantMake(err) {
-                console.log('cantMake')
-                console.log(err)
-            }
         }
         
         // // client-script
