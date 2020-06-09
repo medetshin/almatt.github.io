@@ -6,11 +6,12 @@
 </head>
 <body>
     <div id="paybox"></div>
+    <div id="paybox1"></div>
     <script src="https://d0871f33743e.ngrok.io/applepay-client/index.js"></script>
     <script>
 
         window.onload = () => {
-            window.PayBoxApplePay(
+            window.PayBoxPayButtons(
                 'paybox',
                 'qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw', 
                 {
@@ -19,6 +20,38 @@
                 success, 
                 error, 
                 canMake, 
+                cantMake
+            );
+
+            function success(r) {
+                console.log('success')
+                console.log(r)
+            }
+
+            function error(r) {
+                console.log('error')
+                console.log(r)
+            }
+
+            function canMake() {
+                console.log('canMake')
+            }
+
+            function cantMake(err) {
+                console.log('cantMake')
+                console.log(err)
+            }
+
+
+            window.PayBoxPayButtons(
+                'paybox1',
+                'qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw',
+                {
+                    amount: 456, description: 'asd'
+                },
+                success,
+                error,
+                canMake,
                 cantMake
             );
 
