@@ -10,7 +10,36 @@
     <script>
 
         window.onload = () => {
-            window.PayBoxApplePay('paybox', 'qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw', {amount: 123, description: 'asd'}, () => { }, () => { }, (a) => {console.log(a)}, (err)=> {console.log(err)});
+            window.PayBoxApplePay(
+                'paybox',
+                'qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw', 
+                {
+                    amount: 123, description: 'asd'
+                }, 
+                success, 
+                error, 
+                canMake, 
+                cantMake
+            );
+
+            function success(r) {
+                console.log('success')
+                console.log(r)
+            }
+
+            function error(r) {
+                console.log('error')
+                console.log(r)
+            }
+
+            function canMake() {
+                console.log('canMake')
+            }
+
+            function cantMake(err) {
+                console.log('cantMake')
+                console.log(err)
+            }
         }
         
         // // client-script
