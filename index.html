@@ -7,13 +7,13 @@
 <body>
     <div id="paybox"></div>
     <div id="paybox1"></div>
-    <script src="https://staging.paybox.kz/tokens/pay-buttons-client.js"></script>
+    <script src="https://5c2e6d6670c5.ngrok.io/tokens/pay-buttons-client.js"></script>
     <script>
 
         window.onload = () => {
             window.PayBoxPayButtons(
                 'paybox',
-                'CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b', 
+                'qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw', 
                 {
                     amount: 123, description: 'asd'
                 }, 
@@ -29,7 +29,7 @@
             }
 
             function error(r) {
-                alert(r);
+                console.log('error')
                 console.log(r)
             }
 
@@ -42,13 +42,13 @@
             }
 
             function cantMake(err) {
-                alert(err);
+                console.log('cantMake')
                 console.log(err)
             }
 
             window.PayBoxPayButtons(
                 'paybox1',
-                'CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b',
+                'qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw',
                 {
                     amount: 456, description: 'asd'
                 },
