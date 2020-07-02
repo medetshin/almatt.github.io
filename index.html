@@ -7,7 +7,7 @@
 <body>
     <div id="paybox"></div>
     <div id="paybox1"></div>
-    <script src="https://5c2e6d6670c5.ngrok.io/tokens/pay-buttons-client.js"></script>
+    <script src="https://5c2e6d6670c5.ngrok.io/tokens/pay-buttons-client.js?v1"></script>
     <script>
 
         window.onload = () => {
@@ -29,7 +29,7 @@
             }
 
             function error(r) {
-                alert('error')
+                alert(r)
                 console.log(r)
             }
 
