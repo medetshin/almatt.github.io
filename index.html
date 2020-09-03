@@ -5,59 +5,52 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="paybox"></div>
-    <div id="paybox1"></div>
-    <script src="https://paybox.kz/tokens/pay-buttons-client.js?v3"></script>
+    <script src="https://d0d4ea3cdfd2.ngrok.io/client_script.js"></script>
+    <iframe src="https://almatt.github.io/frame-script/" name="payboxFrame" frameborder="0"></iframe>
     <script>
 
-        window.onload = () => {
-            window.PayBoxPayButtons(
-                'paybox',
-                'CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b', // qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b
-                {
-                    amount: 1, description: 'asd'
-                }, 
-                success, 
-                error, 
-                canMake, 
-                cantMake
-            );
+        // window.onload = () => {
+        //     window.PayBoxPayButtons(
+        //         'paybox',
+        //         'ТОКЕН', 
+        //         {
+        //             amount: 100, 
+        //             description: 'Описание'
+        //         }, 
+        //         success, 
+        //         error, 
+        //         canMake, 
+        //         cantMake
+        //     );
 
-            function success(r) {
-                alert('success')
-                console.log(r)
-            }
+        //     function success(r) {
+        //         //
+        //     }
 
-            function error(r) {
-                alert(JSON.stringify(r, null, 4))
-                console.log(r)
-            }
+        //     function error(r) {
+        //         //
+        //     }
 
-            function canMake() {
-                console.log('canMake')
-            }
+        //     function canMake() {
+        //         //
+        //     }
 
-            function canMakeA() {
-                console.log('canMakeA')
-            }
+        //     function cantMake(err) {
+        //         //
+        //     }
 
-            function cantMake(err) {
-                alert(JSON.stringify(err, null, 4))
-                console.log(err)
-            }
-
-            window.PayBoxPayButtons(
-                'paybox1',
-                'CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b', // qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b
-                {
-                    amount: 2, description: 'asd'
-                },
-                success,
-                error,
-                canMakeA,
-                cantMake
-            );
-        }
+        //     window.PayBoxPayButtons(
+        //         'paybox1',
+        //         'CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b', // qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b
+        //         {
+        //             amount: 2, description: 'asd'
+        //         },
+        //         success,
+        //         error,
+        //         canMakeA,
+        //         cantMake
+        //     );
+        // }
         
         // // client-script
         // setTimeout(async () => {
