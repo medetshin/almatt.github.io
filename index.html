@@ -3,9 +3,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        (function (p, a, y, b, o, x) {
+            o = p.createElement(a);
+            x = p.getElementsByTagName(a)[0];
+            o.async = 1;
+            o.src = 'https://paybox.kz/tokens/pay-buttons-client.js?' + 1 * new Date();
+            x.parentNode.insertBefore(o, x);
+        })(document, 'script');
+    </script>
+
 </head>
 <body>
-    <script src="https://paybox.kz/client_script.js"> </script>
+    <!-- <script src="https://paybox.kz/client_script.js"> </script> -->
     <!-- <iframe src="https://almatt.github.io/frame-script/" name="payboxFrame" frameborder="0"></iframe> -->
     <div id="paybox1"></div>
     <!-- <iframe
