@@ -34,19 +34,19 @@
             // );
 
             function success(r) {
-                alert('success');
+                alert('success', JSON.stringify(r));
             }
 
             function error(r) {
-                alert('error');
+                alert('error', JSON.stringify(r));
             }
 
             function canMake() {
-                //
+                alert('canMake');
             }
 
             function cantMake(err) {
-                //
+                alert('cantMake');
             }
 
             window.PayBoxPayButtons(
