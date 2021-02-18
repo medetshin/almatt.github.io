@@ -149,7 +149,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       showApplePayButton: false,
       errorStatus: 'error',
       successStatus: 'ok',
-      applePayCode: 'applepay'
+      applePayCode: 'applepay',
+      process: false
     };
   },
   computed: {
@@ -206,13 +207,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     checkout: function checkout() {
-      if (!this.process) {
+      if (this.process) {
         return;
       }
 
+      this.proceess = true;
       this.applePay.checkout();
     },
     resultApplePay: function resultApplePay(status, response) {
+      this.proceess = false;
+
       if (response.status && ~[this.errorStatus, this.successStatus].indexOf(response.status)) {
         if (response.status === 'ok') {
           console.log('success');
