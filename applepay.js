@@ -180,7 +180,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context.abrupt("return");
 
               case 4:
-                _this.applePay = new _paybox_paybox_applepay__WEBPACK_IMPORTED_MODULE_1___default.a(params, 'merchant.kz.paybox.merchants', _this.resultApplePay, '', window.PT);
+                _this.applePay = new _paybox_paybox_applepay__WEBPACK_IMPORTED_MODULE_1___default.a(params, 'merchant.kz.paybox.p2p', _this.resultApplePay, '', window.PT);
                 _context.prev = 5;
                 _context.next = 8;
                 return _this.applePay.exists();
