@@ -187,7 +187,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 8:
                 response = _context.sent;
-                console.log(response);
+                alert(JSON.stringify(response));
                 _this.showApplePayButton = response;
                 _context.next = 16;
                 break;
