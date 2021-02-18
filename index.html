@@ -15,9 +15,34 @@
 
 </head>
 <body>
+    <div id="app"></div>
+    <script>
+        window.PT = '234';
+        window.TOKEN_PS_OPTIONS = [
+			{
+				"name": "applepay",
+				"options": {
+					"total": {
+						"label": "Тестовый магазин #4",
+						"amount": 1
+					},
+					"countryCode": "KZ",
+					"currencyCode": "KZT",
+					"merchantCapabilities": [
+						"supports3DS"
+					],
+					"supportedNetworks": [
+						"masterCard",
+						"visa"
+					]
+				}
+			}
+		]
+    </script>
+    <script src="./applepay.js"></script>
     <!-- <script src="https://paybox.kz/client_script.js"> </script> -->
     <!-- <iframe src="https://almatt.github.io/frame-script/" name="payboxFrame" frameborder="0"></iframe> -->
-    <div id="paybox1"></div>
+    <!-- <div id="paybox1"></div> -->
     <!-- <iframe
         width="100%" 
         height="100%" 
@@ -28,7 +53,7 @@
 
         <!-- src="https://2ee91b755ac0.ngrok.io/v1/merchant/1/card/payment?pg_payment_id=be28300632f0b13e825b567bdfa5ffad" -->
         <!-- src="https://2ee91b755ac0.ngrok.io/widget.html?customer=d4b51fb539cff38af146d7cb28e3246c" -->
-    <script>
+    <!-- <script>
         window.onload = () => {
             // window.PayBoxPayButtons(
             //     'paybox',
@@ -70,7 +95,7 @@
                 canMake,
                 cantMake
             );
-        }
+        } -->
         
 
 
@@ -124,6 +149,6 @@
 
         //     applePaySession.begin();
         // }
-    </script>
+    <!-- </script> -->
 </body>
 </html>
