@@ -187,21 +187,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 8:
                 response = _context.sent;
+                console.log(response);
                 _this.showApplePayButton = response;
-                _context.next = 15;
+                _context.next = 16;
                 break;
 
-              case 12:
-                _context.prev = 12;
+              case 13:
+                _context.prev = 13;
                 _context.t0 = _context["catch"](5);
                 _this.showApplePayButton = false;
 
-              case 15:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[5, 12]]);
+        }, _callee, null, [[5, 13]]);
       }))();
     },
     checkout: function checkout() {
