@@ -8,7 +8,7 @@
             o = p.createElement(a);
             x = p.getElementsByTagName(a)[0];
             o.async = 1;
-            o.src = 'https://paybox.kz/tokens/pay-buttons-client.js?' + 1 * new Date();
+            o.src = 'https://widget.paybox.money/v1/paybox/pbwidget.js?' + 1 * new Date();
             x.parentNode.insertBefore(o, x);
         })(document, 'script');
     </script>
@@ -16,30 +16,67 @@
 </head>
 <body>
     <div id="app"></div>
+    <button onclick="pay(100)">Оплатить</button>
     <script>
-        window.PT = '234';
-        window.TOKEN_PS_OPTIONS = [
-			{
-				"name": "applepay",
-				"options": {
-					"total": {
-						"label": "Тестовый магазин #4",
-						"amount": 1
-					},
-					"countryCode": "KZ",
-					"currencyCode": "KZT",
-					"merchantCapabilities": [
-						"supports3DS"
-					],
-					"supportedNetworks": [
-						"masterCard",
-						"visa"
-					]
-				}
-			}
-		]
+          function pay(amount) {
+            var data = {
+            token: "GD6V1FisqGaETHMx1tOMxQLjs6PiKN0F",
+            payment: {
+                order: "1",
+                amount: "200",
+                currency: "KZT",
+                description: "Описание заказа",
+                expires_at: "2021-12-12 00:00:00",
+                param1: "string",
+                param2: "string",
+                param3: "string",
+                options: {
+                    callbacks: {
+                        result_url: "https://my-domain.com/result",
+                        check_url: "https://my-domain.com/check"
+                    },
+                    custom_params: {},
+                    user: {
+                        ip: "192.168.1.1",
+                        email: "user@test.com",
+                        phone: "77777777777",
+                    }
+                }
+            },
+            successCallback: function (payment) {
+                //...
+            },
+            errorCallback: function (payment) {
+                //...
+            }
+            }
+
+            var paybox = new PayBox(data);
+            paybox.create();
+        }
+    //     window.PT = '234';
+    //     window.TOKEN_PS_OPTIONS = [
+	// 		{
+	// 			"name": "applepay",
+	// 			"options": {
+	// 				"total": {
+	// 					"label": "Тестовый магазин #4",
+	// 					"amount": 1
+	// 				},
+	// 				"countryCode": "KZ",
+	// 				"currencyCode": "KZT",
+	// 				"merchantCapabilities": [
+	// 					"supports3DS"
+	// 				],
+	// 				"supportedNetworks": [
+	// 					"masterCard",
+	// 					"visa"
+	// 				]
+	// 			}
+	// 		}
+	// 	]
     </script>
-    <script src="./applepay.js?v2"></script>
+    <!-- <script src="./applepay.js?v2"></script> -->
     <!-- <script src="https://paybox.kz/client_script.js"> </script> -->
     <!-- <iframe src="https://almatt.github.io/frame-script/" name="payboxFrame" frameborder="0"></iframe> -->
     <!-- <div id="paybox1"></div> -->
