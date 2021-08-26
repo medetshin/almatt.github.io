@@ -11,7 +11,7 @@
     <script>
         async function init () {
             var applePaySession = '';
-            alert(4);
+            alert(5);
             if (window.ApplePaySession) {
                 var exist = await window.ApplePaySession.canMakePaymentsWithActiveCard('merchant.kz.paybox.merchants');
 
@@ -49,7 +49,7 @@
                     alert('12312312312', JSON.stringify(response));
                     applePaySession.completeMerchantValidation(response.data);
                 } catch (error) {
-                    alert(error);
+                    alert(JSON.stringify(error));
                 }
             }
 
