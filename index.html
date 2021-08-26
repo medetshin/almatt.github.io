@@ -11,7 +11,7 @@
     <script>
         async function init () {
             var applePaySession = '';
-            alert(5);
+            alert(6);
             if (window.ApplePaySession) {
                 var exist = await window.ApplePaySession.canMakePaymentsWithActiveCard('merchant.kz.paybox.merchants');
 
@@ -46,7 +46,7 @@
             async function validateMerchant(event) {
                 try {
                     const response = axios.get('https://spicy-warthog-46.loca.lt/merchant-session/new?validationURL=https://apple-pay-gateway.apple.com/paymentservices/paymentSession&domain=&almatt.github.io');
-                    alert('12312312312', JSON.stringify(response));
+                    alert(response);
                     applePaySession.completeMerchantValidation(response.data);
                 } catch (error) {
                     alert(JSON.stringify(error));
