@@ -46,7 +46,7 @@
 
             async function validateMerchant(event) {
                 try {
-                    const resposnse = axios.get('http://localhost:8099/merchant-session/new?validationURL=https://apple-pay-gateway.apple.com/paymentservices/paymentSession&domain=&almatt.github.io');
+                    const resposnse = axios.get('https://spicy-warthog-46.loca.lt/merchant-session/new?validationURL=https://apple-pay-gateway.apple.com/paymentservices/paymentSession&domain=&almatt.github.io');
                     alert(JSON.stringify(response.data));
                     applePaySession.completeMerchantValidation(response.data);
                 } catch (error) {}
@@ -70,7 +70,7 @@
                     paymentApplicationData: paymentTransactionHeader.applicationData
                 };
 
-                const response = await axios.post('http://localhost:8099/decrypt', {
+                const response = await axios.post('https://spicy-warthog-46.loca.lt/decrypt', {
                     token: {
                         'data' : processPaymentData.paymentData,
                         'header' : {
