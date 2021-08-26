@@ -1,0 +1,197 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        (function (p, a, y, b, o, x) {
+            o = p.createElement(a);
+            x = p.getElementsByTagName(a)[0];
+            o.async = 1;
+            o.src = 'https://widget.paybox.money/v1/staging/pbwidget.js?' + 1 * new Date();
+            x.parentNode.insertBefore(o, x);
+        })(document, 'script');
+    </script>
+    <script src="https://api.paybox.money/client_script.js"></script>
+</head>
+<body>
+    <!-- <div id="app"></div> -->
+    <!-- <script nonce="" type="text/javascript">
+		window.PT = '0473c358ce45056255fb9447ae29c4b7';
+		window.TOKEN_PS_OPTIONS = [{"name":"applepay","options":{"total":{"label":"\u0422\u0435\u0441\u0442\u043e\u0432\u044b\u0439 \u043c\u0430\u0433\u0430\u0437\u0438\u043d #4","amount":2000},"countryCode":"KZ","currencyCode":"KZT","merchantCapabilities":["supports3DS"],"supportedNetworks":["masterCard","visa"]}}];
+		window.GET_STATUS = 'https://paybox.kz/v1/merchant/9970/card/getstatus?pg_payment_id=0473c358ce45056255fb9447ae29c4b7';
+	</script>
+    <script src="https://paybox.kz/assets/tokenpay-page/app.js"></script> -->
+    <button onclick="pay(100)">Оплатить</button>
+    <script>
+          function pay(amount) {
+            var data = {
+                token: "GD6V1FisqGaETHMx1tOMxQLjs6PiKN0F",
+                payment: {
+                    order: "1",
+                    amount: "10",
+                    currency: "KZT",
+                    description: "Описание заказа",
+                    expires_at: "2021-12-12 00:00:00",
+                    param1: "string",
+                    param2: "string",
+                    param3: "string",
+                    options: {
+                        callbacks: {
+                            result_url: "https://my-domain.com/result",
+                            check_url: "https://my-domain.com/check"
+                        },
+                        custom_params: {},
+                        user: {
+                            ip: "192.168.1.1",
+                            email: "user@test1.com",
+                            phone: "77777777777",
+                        }
+                    }
+                },
+                successCallback: function (payment) {
+                    //...
+                },
+                errorCallback: function (payment) {
+                    //...
+                }
+            }
+
+            var paybox = new PayBox(data);
+            paybox.create();
+        }
+    <!-- //     window.PT = '234';
+    //     window.TOKEN_PS_OPTIONS = [
+	// 		{
+	// 			"name": "applepay",
+	// 			"options": {
+	// 				"total": {
+	// 					"label": "Тестовый магазин #4",
+	// 					"amount": 1
+	// 				},
+	// 				"countryCode": "KZ",
+	// 				"currencyCode": "KZT",
+	// 				"merchantCapabilities": [
+	// 					"supports3DS"
+	// 				],
+	// 				"supportedNetworks": [
+	// 					"masterCard",
+	// 					"visa"
+	// 				]
+	// 			}
+	// 		}
+	// 	] -->
+    <!-- </script> -->
+    <!-- <script src="./applepay.js?v2"></script> -->
+    <!-- <script src="https://paybox.kz/client_script.js"> </script> -->
+    <!-- <iframe src="https://almatt.github.io/frame-script/" name="payboxFrame" frameborder="0"></iframe> -->
+    <!-- <div id="paybox1"></div> -->
+    <!-- <iframe
+        width="100%" 
+        height="100%" 
+        name="payboxFrame" 
+        src="https://paybox.kz/v1/merchant/9970/card/payment?pg_payment_id=f8136510bee004c90a1ddb6e2d552ee6"
+        frameborder="0">
+    </iframe> -->
+
+        <!-- src="https://2ee91b755ac0.ngrok.io/v1/merchant/1/card/payment?pg_payment_id=be28300632f0b13e825b567bdfa5ffad" -->
+        <!-- src="https://2ee91b755ac0.ngrok.io/widget.html?customer=d4b51fb539cff38af146d7cb28e3246c" -->
+    <!-- <script>
+        window.onload = () => {
+            // window.PayBoxPayButtons(
+            //     'paybox',
+            //     'ТОКЕН', 
+            //     {
+            //         amount: 100, 
+            //         description: 'Описание'
+            //     }, 
+            //     success, 
+            //     error, 
+            //     canMake, 
+            //     cantMake
+            // );
+
+            function success(r) {
+                alert('success', JSON.stringify(r));
+            }
+
+            function error(r) {
+                alert('error', JSON.stringify(r));
+            }
+
+            function canMake() {
+                alert('canMake');
+            }
+
+            function cantMake(err) {
+                alert('cantMake', JSON.stringify(err));
+            }
+
+            window.PayBoxPayButtons(
+                'paybox1',
+                'CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b', // qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b
+                {
+                    amount: 2, description: 'asd'
+                },
+                success,
+                error,
+                canMake,
+                cantMake
+            );
+        } -->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- // // client-script
+        // setTimeout(async () => {
+        //     const response = await window.ApplePaySession.canMakePaymentsWithActiveCard('merchant.kz.paybox.p2p');
+
+        //     window.frames[0].postMessage({
+        //         event: response
+        //     },'*');
+        // }, 2000);
+
+        // window.addEventListener("message", receiveMessage, false);
+
+        // function receiveMessage(event) {
+        //     console.log(event);
+
+        //     const options = {
+        //             'total': {
+        //                 'label': 'ApplePay',
+        //                 'amount': 200,
+        //             },
+        //             'countryCode': 'KZ',
+        //             'currencyCode': 'KZT',
+        //             'merchantCapabilities': ['supports3DS'],
+        //             'supportedNetworks': ['masterCard', 'visa']
+        //     }
+
+        //     const applePaySession = new window.ApplePaySession(1, options);
+
+        //     applePaySession.onvalidatemerchant = function() { console.log('validation') };
+        //     applePaySession.onpaymentauthorized = function() { console.log('paymentauth') };
+
+        //     applePaySession.begin();
+        // } -->
+    <!-- </script> -->
+</body>
+</html>
