@@ -46,7 +46,7 @@
             async function validateMerchant(event) {
                 try {
                     const response = await axios.get('https://warm-snail-65.loca.lt/merchant-session/new?validationURL=https://apple-pay-gateway.apple.com/paymentservices/paymentSession&domain=almatt.github.io');
-                    alert(response);
+                    alert(JSON.stringify(response));
                     applePaySession.completeMerchantValidation(response.data);
                 } catch (error) {
                     alert(error);
