@@ -45,7 +45,7 @@
 
             async function validateMerchant(event) {
                 try {
-                    const resposnse = axios.get('https://spicy-warthog-46.loca.lt/merchant-session/new?validationURL=https://apple-pay-gateway.apple.com/paymentservices/paymentSession&domain=&almatt.github.io');
+                    const response = axios.get('https://spicy-warthog-46.loca.lt/merchant-session/new?validationURL=https://apple-pay-gateway.apple.com/paymentservices/paymentSession&domain=&almatt.github.io');
                     alert(JSON.stringify(response.data));
                     applePaySession.completeMerchantValidation(response.data);
                 } catch (error) {
