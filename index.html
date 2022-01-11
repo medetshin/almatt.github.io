@@ -1,98 +1,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script> 
     <title>Document</title>
+    <script src="https://api.paybox.money/client_script.js"></script>
 </head>
 <body>
-    <div id="btn">BUY</div>
-    <script>
-        async function init () {
-            var applePaySession = '';
-            alert(7);
-            if (window.ApplePaySession) {
-                var exist = await window.ApplePaySession.canMakePaymentsWithActiveCard('merchant.kz.paybox.merchants');
-
-                var paymentData = {
-                    "total": {
-                        "label": "Тестовый магазин #5",
-                        "amount": 10
-                    },
-                    "countryCode": "KZ",
-                    "currencyCode": "KZT",
-                    "merchantCapabilities": [
-                        "supports3DS"
-                    ],
-                    "supportedNetworks": [
-                        "masterCard",
-                        "visa"
-                    ]
-                }
-
-                var btn = document.getElementById('btn');
-
-                btn.addEventListener('click', function() {
-                    applePaySession = new window.ApplePaySession(1, paymentData);
-
-                    applePaySession.onvalidatemerchant = validateMerchant;
-                    applePaySession.onpaymentauthorized = paymentAuthorize;
-
-                    applePaySession.begin();
-                })
-            }
-
-            async function validateMerchant(event) {
-                try {
-                    const response = await axios.get('https://warm-snail-65.loca.lt/merchant-session/new?validationURL=https://apple-pay-gateway.apple.com/paymentservices/paymentSession&domain=almatt.github.io');
-
-                    applePaySession.completeMerchantValidation(response.data);
-                } catch (error) {
-                    alert(error);
-                }
-            }
-
-            async function paymentAuthorize(event) {
-                try {
-                const paymentTransactionHeader = event.payment.token.paymentData.header;
-
-                const processPaymentData = {
-                    paymentID: event.payment.token.transactionIdentifier,
-
-                    paymentTransactionEncryption: event.payment.token.paymentData.version,
-                    paymentData: event.payment.token.paymentData.data,
-                    paymentSignature: event.payment.token.paymentData.signature,
-                    paymentTransactionHeader: paymentTransactionHeader,
-
-                    paymentEphemeralPublicKey: paymentTransactionHeader.ephemeralPublicKey,
-                    paymentPublicKeyHash: paymentTransactionHeader.publicKeyHash,
-                    paymentTransactionId: paymentTransactionHeader.transactionId,
-                    paymentApplicationData: paymentTransactionHeader.applicationData
-                };
-
-                const response = await axios.post('https://warm-snail-65.loca.lt/decrypt', {
-                    token: {
-                        'data' : processPaymentData.paymentData,
-                        'header' : {
-                            'ephemeralPublicKey': processPaymentData.paymentEphemeralPublicKey,
-                        },
-                    },
-                    domain: 'almatt.github.io',
-                });
-
-                alert(JSON.stringify(response.data));
-
-                //applePaySession.completePayment(response.data.data.status);
-                
-                } catch (error) {
-                    alert(JSON.stringify(error));
-                }
-            }
-        }
-        
-        init();
-
-    </script>
+    <iframe
+        width="100%" 
+        height="100%" 
+        name="payboxFrame" 
+        src="https://customer.paybox.money/v1/merchant/9970/card/payment?pg_payment_id=ef059acffe85a2b7c91b8bcffacec8c4"
+        frameborder="0">
+    </iframe>
 </body>
 </html>
