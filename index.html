@@ -15,42 +15,8 @@
     <script src="https://api.paybox.money/client_script.js"></script>
 </head>
 <body>
-    <script type="text/javascript" src="https://widget.paybox.money/v1/paybox/pbwidget.js?d=9.09.2022 14:09:39"></script>
-<script type="text/javascript">
- function pay() {
-        var data = {
-            token: "WQT9n1Qb47cd6Oc5JibM3i9IcfGwp2aL",
-            payment: {
-                order: "10703288",
-                amount: 7507.42,
-                language: 'ru', 
-                description: '1185958',
-                test:0,
-                options: {
-						callbacks: {
-									result_url: "https://www.ersagglobal.com.kz/payboxmoney.asp?oid=10703288"
-								  },				
-                          user: {
-                            email: "",
-                            phone: "996708740526"
-                          }
-                        }
-
-            },
-            successCallback: function (payment) {
-                document.location.href="/payboxmoney.asp?success=true&oid=10703288";
-            },
-            errorCallback: function (payment) {
-                document.location.href ="/payboxmoney.asp?success=true&oid=10703288";
-            }
-        }
-
-        var paybox = new PayBox(data);
-        paybox.create();
-    }
-</script>
     <button onclick="pay(100)">Оплатить</button>
-<!--     <script>
+ <script>
           function pay(amount) {
             var data = {
                 token: "GD6V1FisqGaETHMx1tOMxQLjs6PiKN0F",
@@ -87,6 +53,6 @@
             var paybox = new PayBox(data);
             paybox.create();
         }
-    </script> -->
+    </script>
 </body>
 </html>
