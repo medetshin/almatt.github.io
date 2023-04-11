@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
+<!--     <script>
     // Initialize the agent at application startup.
     const fpPromise = import('https://fpjscdn.net/v3/CMkmDlV8g6kpfa6sY9E2')
       .then(FingerprintJS => FingerprintJS.load({
@@ -28,10 +28,10 @@
             x.parentNode.insertBefore(o, x);
         })(document, 'script');
     </script>
-    <script src="https://api.paybox.money/client_script.js"></script>
+    <script src="https://api.paybox.money/client_script.js"></script> -->
 </head>
 <body>
-    <button onclick="pay(100)">Оплатить</button>
+<!--     <button onclick="pay(100)">Оплатить</button>
  <script>
           function pay(amount) {
             var data = {
@@ -65,7 +65,7 @@
             var paybox = new PayBox(data);
             paybox.create();
         }
-    </script>
+    </script> -->
     
     <div id="myapplepay"></div>
     
@@ -86,9 +86,9 @@
             }
             window.PayBoxPayButtons(
                 'myapplepay',
-                'CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b', // qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b
+                '84VNru4BfZlmyuxQkW6sbxVWmHE7MBpk', // qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b
                 {
-                    amount: 2, description: 'asd'
+                    amount: 100, description: 'aasdasd asdssd'
                 },
                 success,
                 error,
