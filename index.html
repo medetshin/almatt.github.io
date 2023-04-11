@@ -72,31 +72,35 @@
     <script src="https://customer.paybox.money/tokens/pay-buttons-client.js"></script>
     
     <script>
-        window.onload = () => {
-        function success(r) {
-                alert('success', JSON.stringify(r));
-            }
-            function error(r) {
-                alert('error', JSON.stringify(r));
-            }
-            function canMake() {
-                alert('canMake');
-            }
-            function cantMake(err) {
-                alert(JSON.stringify(err));
-            }
-            window.PayBoxPayButtons(
-                'myapplepay',
-                '84VNru4BfZlmyuxQkW6sbxVWmHE7MBpk', // qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b
-                {
-                    amount: 100, description: 'aasdasd asdssd'
-                },
-                success,
-                error,
-                canMake,
-                cantMake
-            );
-        };
+//         window.onload = () => {
+//         function success(r) {
+//                 alert('success', JSON.stringify(r));
+//             }
+//             function error(r) {
+//                 alert('error', JSON.stringify(r));
+//             }
+//             function canMake() {
+//                 alert('canMake');
+//             }
+//             function cantMake(err) {
+//                 alert(JSON.stringify(err));
+//             }
+//             window.PayBoxPayButtons(
+//                 'myapplepay',
+//                 '84VNru4BfZlmyuxQkW6sbxVWmHE7MBpk', // qZ0iGnvGZTMuU0RTdBHsCXe9XPPG2auw CdLAdlGDTVZwvPhOBNsY5BotwMgVIN8b
+//                 {
+//                     amount: 100, description: 'aasdasd asdssd'
+//                 },
+//                 success,
+//                 error,
+//                 canMake,
+//                 cantMake
+//             );
+//         };
+        
+        const response = await window.ApplePaySession.canMakePaymentsWithActiveCard('merchant.kz.paybox.merchants');
+        
+        alert(response);
     </script>
 </body>
 </html>
