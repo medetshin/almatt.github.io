@@ -97,10 +97,14 @@
 //                 cantMake
 //             );
 //         };
+        async function a() {
+            const response = await window.ApplePaySession.canMakePaymentsWithActiveCard('merchant.kz.paybox.merchants');
         
-        const response = await window.ApplePaySession.canMakePaymentsWithActiveCard('merchant.kz.paybox.merchants');
+            alert(response);
+        }
         
-        alert(response);
+        a();
+        
     </script>
 </body>
 </html>
